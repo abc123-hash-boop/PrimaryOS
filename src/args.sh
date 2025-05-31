@@ -49,16 +49,16 @@ echo "Language environment has been set to $LANG_MODE"
 export TARGET_UBUNTU_VERSION="plucky"
 
 # See https://docs.anduinos.com/Install/Select-Best-Apt-Source.html
-export BUILD_UBUNTU_MIRROR="http://mirror.aiursoft.cn/ubuntu/"
+export BUILD_UBUNTU_MIRROR="http://archive.ubuntu.com/ubuntu/"
 
 # Must be lowercase without special characters and spaces
-export TARGET_NAME="anduinos"
+export TARGET_NAME="primaryos"
 
 # Business name. No special characters or spaces
-export TARGET_BUSINESS_NAME="AnduinOS"
+export TARGET_BUSINESS_NAME="PrimaryOS"
 
 # Version number. Must be in the format of x.y.z
-export TARGET_BUILD_VERSION="1.3.3"
+export TARGET_BUILD_VERSION="2.0.0"
 
 # Fork version. Must be in the format of x.y
 export TARGET_BUILD_BRANCH=$(git rev-parse --abbrev-ref HEAD)
