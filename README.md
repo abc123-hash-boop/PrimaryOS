@@ -11,7 +11,7 @@ AnduinOS is a custom Ubuntu-based Linux distribution that aims to facilitate dev
 
 [Download AnduinOS](https://www.anduinos.com/)
 
-![Screenshot](./screenshot.png)
+![Screenshot](./sc.png)
 
 ## How to build
 
