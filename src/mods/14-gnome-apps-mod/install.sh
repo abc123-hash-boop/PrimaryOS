@@ -3,77 +3,9 @@ set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
 
 print_ok "Installing gnome-shell and other gnome applications"
-wait_network
 
-print_ok "Installing basic CLI tools..."
 apt install -y alsa-base  alsa-utils  anacron  at-spi2-core  bc  ca-certificates  dmz-cursor-theme  fontconfig  fonts-dejavu-core  foomatic-db-compressed-ppds  gdm3  ghostscript  gnome-control-center  gnome-menus  gnome-session-canberra  gnome-settings-daemon  gnome-shell  gnome-shell-extension-appindicator  gnome-shell-extension-desktop-icons-ng  gnome-shell-extension-ubuntu-dock  gnome-shell-extension-ubuntu-tiling-assistant  gstreamer1.0-alsa  gstreamer1.0-packagekit  gstreamer1.0-plugins-base-apps  inputattach  language-selector-common  language-selector-gnome  libatk-adaptor  libnotify-bin  libsasl2-modules  libu2f-udev  nautilus  openprinting-ppds  pipewire-pulse  printer-driver-pnm2ppa  rfkill  software-properties-gtk  spice-vdagent  ubuntu-desktop-minimal  ubuntu-drivers-common  ubuntu-release-upgrader-gtk  ubuntu-session  ubuntu-settings  unzip  update-manager  update-notifier  wireless-tools  wireplumber  wpasupplicant  xdg-user-dirs  xdg-user-dirs-gtk  xkb-data  xorg  yelp  zenity  zip apport-gtk  appstream  apt-config-icons-hidpi  avahi-daemon  baobab  bluez  bluez-cups  brltty  cloud-init  cups  cups-bsd  cups-client  cups-filters  deja-dup  dirmngr  eog  evince  file-roller  fonts-liberation  fonts-noto-cjk  fonts-noto-color-emoji  fonts-noto-core  fonts-ubuntu  fwupd  fwupd-signed  gamemode  gir1.2-gmenu-3.0  gnome-accessibility-themes  gnome-bluetooth-sendto  gnome-disk-utility  gnome-font-viewer  gnome-initial-setup  gnome-keyring  gnome-logs  gnome-power-manager  gnome-remote-desktop  gnome-snapshot  gnome-system-monitor  gnome-terminal  gnome-text-editor  gpg-agent  gsettings-ubuntu-schemas  gvfs-fuse  hplip  ibus  ibus-gtk  ibus-gtk3  ibus-table  im-config  kerneloops  laptop-detect  libglib2.0-bin  libnss-mdns  libpam-fprintd  libpam-gnome-keyring  libpam-sss  libproxy1-plugin-gsettings  libproxy1-plugin-networkmanager  libspa-0.2-bluetooth  libwmf0.2-7-gtk  memtest86+  mousetweaks  nautilus-sendto  network-manager  network-manager-config-connectivity-ubuntu  network-manager-openvpn-gnome  network-manager-pptp-gnome  orca  packagekit  pcmciautils  plymouth-theme-spinner  policykit-desktop-privileges  printer-driver-brlaser  printer-driver-c2esp  printer-driver-foo2zjs  printer-driver-m2300w  printer-driver-min12xxw  printer-driver-ptouch  printer-driver-pxljr  printer-driver-sag-gdi  printer-driver-splix  remmina  rhythmbox  seahorse  shotwell  simple-scan  snapd  speech-dispatcher  systemd-oomd  totem  transmission-gtk  ubuntu-wallpapers  usb-creator-gtk  whoopsie  xcursor-themes  xdg-desktop-portal-gnome  xdg-utils  yaru-theme-gnome-shell  yaru-theme-gtk  yaru-theme-icon  yaru-theme-sound
-apt install $INTERACTIVE \
-    apt-transport-https \
-    cifs-utils \
-    cloud-init \
-    coreutils \
-    gnupg \
-    gpg \
-    gvfs-fuse \
-    gvfs-backends \
-    wsdd \
-    libsass1 \
-    lsb-release \
-    systemd-timesyncd \
-    fwupd \
-    fwupd-signed \
-    gdb \
-    sassc \
-    software-properties-common \
-    gnome-remote-desktop \
-    mesa-vulkan-drivers \
-    squashfs-tools \
-    sysstat \
-    wget \
-    whiptail \
-    gdisk \
-    eatmydata \
-    patch \
-    less \
-    gnupg-l10n \
-    gpg-wks-client \
-    upower \
-    mdadm \
-    appstream \
-    packagekit-tools \
-    python3-babel \
-    unattended-upgrades \
-    exfatprogs \
-    iw \
-    xxd \
-    xdg-utils \
-    zenity \
-    power-profiles-daemon \
-    --no-install-recommends
-judge "Install basic CLI tools"
 
-print_ok "Installing gnome basic sessions..."
-apt install $INTERACTIVE \
-    gnome-shell \
-    ubuntu-session \
-    yaru-theme-sound \
-    yaru-theme-gnome-shell \
-    gir1.2-gmenu-3.0 \
-    gnome-menus \
-    gnome-shell-extensions \
-    spice-vdagent \
-    xserver-xorg-input-all \
-    xserver-xorg \
-    xserver-xorg-legacy \
-    xserver-xorg-video-intel \
-    xserver-xorg-video-qxl \
-    xserver-xorg-video-all \
-    gdm3 \
-    libpam-gnome-keyring \
-    gnome-keyring \
-    gnome-keyring-pkcs11 \
-    --no-install-recommends
-judge "Install gnome basic sessions"
 
 apt install $INTERACTIVE \
     orca \
@@ -93,23 +25,6 @@ apt install $INTERACTIVE \
     plymouth-theme-ubuntu-text --no-install-recommends
 judge "Install plymouth"
 
-print_ok "Installing network manager vpn packages..."
-case $TARGET_UBUNTU_VERSION in
-    "jammy" | "noble")
-        apt-get install -y wireless-tools
-        ;;
-    *)
-        print_warn "Package wireless-tools is not available for $TARGET_UBUNTU_VERSION"
-        ;;
-esac
-apt install $INTERACTIVE \
-    openvpn \
-    network-manager-openvpn \
-    network-manager-openvpn-gnome \
-    network-manager-pptp \
-    network-manager-pptp-gnome \
-    --no-install-recommends
-judge "Install network manager vpn packages"
 
 print_ok "Installing nautilus..."
 apt install $INTERACTIVE nautilus --no-install-recommends
