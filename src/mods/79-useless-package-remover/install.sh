@@ -51,7 +51,7 @@ for pkg in "${packages[@]}"; do
 
         if [[ $EXIT_IF_UNNECESSARY_PACKAGE_FOUND -eq 1 ]]; then
             print_error "Unnecessary package found: $pkg"
-            exit 1
+            apt autoremove -y --purge "$pkg"
         fi
 
         apt autoremove -y --purge "$pkg"
