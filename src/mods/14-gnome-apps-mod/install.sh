@@ -4,7 +4,8 @@ print_ok "Installing gnome-shell and other gnome applications"
 
 apt install -y ubuntu-desktop
 snap remove firefox
-
+apt purge -y *libreoffice*
+apt autoremove -y --purge
 
 apt install $INTERACTIVE \
     orca \
